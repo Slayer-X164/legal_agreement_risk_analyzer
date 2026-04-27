@@ -37,11 +37,12 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body className='bg-neutral-950 min-h-screen text-neutral-300 '>
-        <div id='navbar-frame' className='w-full flex items-center justify-center border-b border-neutral-800'>
-          <Navbar/>
-        </div>
-        <div className="h-[calc(100vh-65px)]  bg-[repeating-linear-gradient(45deg,#262626_0px,#262626_1px,transparent_1px,transparent_20px)] flex items-center justify-center">
-          <main className='max-w-6xl w-full p-8 border-x border-neutral-800 min-h-full bg-neutral-950'>
+
+        <div className="min-h-screen flex-col flex items-center  bg-[repeating-linear-gradient(45deg,#262626_0px,#262626_1px,transparent_1px,transparent_20px)] ">
+          <div id='navbar-frame' className='w-full flex items-center justify-center border-b border-neutral-800 bg-neutral-950'>
+            <Navbar />
+          </div>
+          <main className='max-w-6xl  w-full p-8 border-x border-neutral-800 flex-1 bg-neutral-950'>
             {children}
           </main>
         </div>
