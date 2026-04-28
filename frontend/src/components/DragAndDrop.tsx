@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { CiFileOn } from "react-icons/ci"
 import { MdClear } from "react-icons/md"
 import { RxDownload } from "react-icons/rx"
 import File from "./File"
@@ -23,7 +22,21 @@ const DragAndDrop = () => {
   const handleRemoveFile = () => {
     setFile(null)
   }
-  console.log(file)
+
+  const formdata = new FormData()
+  if (file) {
+    formdata.append("file", file)
+  }
+  const handleFileUpload = async () => {
+
+    const res = await fetch(`http://127.0.0.1:8000/api/analyse`, {
+      method: "POST",
+      body: formdata
+    })
+    const data = await res.json()
+    console.log(data)
+  }
+
   return (
     <>
       <section className="border-2 max-w-2xl w-full h-86 rounded-3xl border-neutral-400 dark:border-neutral-700 bg-neutral-400/30 dark:bg-neutral-900/50 border-dashed mt-10 overflow-hidden">
@@ -61,9 +74,9 @@ const DragAndDrop = () => {
                   </div>
                 </div>
               </div>
-              <div className="w-40 bg-green-700  text-neutral-50 text-center p-2 shadow-2xl shadow-green-500 dark:shadow-green-500/50 dark:bg-green-800 rounded-xl hover:bg-green-900 active:scale-95 transition-all duration-300 cursor-pointer">
+              <button onClick={handleFileUpload} className="w-40 bg-green-700  text-neutral-50 text-center p-2 shadow-2xl shadow-green-500 dark:shadow-green-500/50 dark:bg-green-800 rounded-xl hover:bg-green-900 active:scale-95 transition-all duration-300 cursor-pointer">
                 <h3>Scan & Analyse</h3>
-              </div>
+              </button>
             </div>
           )}
         </div>

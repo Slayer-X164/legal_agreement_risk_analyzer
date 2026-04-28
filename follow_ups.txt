@@ -1,0 +1,23 @@
+Tech stack
+Frontend: React + Tailwind CSS. Use react-pdf to render the actual contract PDF inline with colour overlays on risky clauses. This is your showstopper demo moment.
+
+Backend: FastAPI (Python). Handles PDF upload, text extraction, chunking, and orchestrating the AI calls.
+
+PDF parsing: pdfplumber or PyMuPDF — both handle messy real-world PDFs well.
+
+LLM: Claude API or OpenAI. The key is a structured prompt that returns JSON with fields like clause_text, risk_level (high/medium/low), reason, and safer_alternative.
+
+RAG component: Store a vector database of "standard fair clauses" (e.g. from GDPR-compliant NDAs, standard rental agreements). When a risky clause is found, retrieve the nearest safe equivalent and show it as a suggested rewrite. Use FAISS locally or Pinecone for a hosted option.
+
+Embeddings: text-embedding-3-small from OpenAI or a free HuggingFace model.
+-------------------------------------------------------------------
+Build order (what to prioritise)
+Start with the core loop first: upload a PDF → extract text → call LLM → display risk scores as a simple list. Get that working end-to-end before adding the heatmap or RAG. Then layer in the clause highlighting UI, then add the vector store for suggested rewrites. This way you always have something working to show.
+-------------------------------------------------------------------
+Three things separate this from a generic "I built a chatbot" project:
+
+RAG with domain-specific knowledge. You're not just calling an LLM — you've built a retrieval system over a curated knowledge base of legal templates. This shows you understand embeddings, vector search, and grounding AI output in real data.
+
+The PDF heatmap UI. Rendering the original contract with coloured overlays (red = high risk, amber = medium, green = safe) is a visceral demo. Interviewers will immediately ask to try it on their own contracts. That's the goal.
+
+Structured AI output + validation. Using Pydantic to enforce schema on LLM responses shows you know that raw LLM output isn't production-ready — you need error handling, retries, and structured parsing. This is a real engineering skill.
