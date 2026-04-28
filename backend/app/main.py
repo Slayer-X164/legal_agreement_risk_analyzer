@@ -2,15 +2,14 @@ from fastapi import FastAPI
 from app.api import router as api_router
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
-
+from app.core.config import settings
 app = FastAPI(
   title="Contract Risk Analysis and suggestion",
   version="1.0.0"
 )
 
 origins = [
-  "http://localhost:3000",
-  "http://127.0.0.1:3000"
+  settings.frontend_url
 ]
 
 app.add_middleware(

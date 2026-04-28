@@ -1,4 +1,3 @@
-# services/analyse_contract.py
 import pdfplumber
 from docx import Document
 from io import BytesIO
