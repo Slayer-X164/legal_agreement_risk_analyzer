@@ -2,7 +2,7 @@ import pdfplumber
 from docx import Document
 from io import BytesIO
 
-async def analyse_contract(file):
+async def extract_text(file):
     content = await file.read()
     filename = file.filename.lower()
 
@@ -14,8 +14,8 @@ async def analyse_contract(file):
         text = content.decode("utf-8")
     else:
         raise ValueError(f"Unsupported file type: {file.filename}")
-
     return text
+
 
 
 def extract_pdf(content: bytes) -> str:
