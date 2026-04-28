@@ -6,4 +6,5 @@ venv/
 .env/
 *.log
 .vscode/
+.env.*
 .env
