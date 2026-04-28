@@ -26,15 +26,15 @@ const DragAndDrop = () => {
   console.log(file)
   return (
     <>
-      <section className="border-2 max-w-2xl w-full h-86 rounded-3xl border-neutral-700 bg-neutral-900/50 border-dashed mt-10 overflow-hidden">
+      <section className="border-2 max-w-2xl w-full h-86 rounded-3xl border-neutral-400 dark:border-neutral-700 bg-neutral-400/30 dark:bg-neutral-900/50 border-dashed mt-10 overflow-hidden">
         <div className="w-full h-full flex flex-col gap-4 items-center justify-center " onDrop={handleDrop} onDragOver={(e) => e.preventDefault()}>
           {!file ? (
             <>
               <div className="flex flex-col items-center justify-center">
-                <div className="px-2 py-1.5 bg-neutral-800/60 rounded-lg mb-2">
+                <div className="px-2 py-1.5 bg-neutral-700 rounded-lg mb-2">
                   <RxDownload className="text-neutral-400 text-lg" />
                 </div>
-                <h2 className="text-md font-semibold text-neutral-400">Drop your contract here</h2>
+                <h2 className="text-md font-semibold text-neutral-600">Drop your contract here</h2>
                 <h3 className="text-sm text-neutral-500 font-mono pt-0.5">.PDF .DOCX .TXT</h3>
               </div>
               <div className="flex items-center justify-center text-neutral-600 gap-2">
@@ -55,13 +55,13 @@ const DragAndDrop = () => {
               <div className="flex flex-col items-center justify-center gap-2">
                 <File />
                 <div className="flex gap-3 items-center">
-                  <p>{file.name}</p>
-                  <div onClick={handleRemoveFile} className="bg-red-600/30 text-red-600 cursor-pointer  rounded-lg p-1">
+                  <p className="text-sm md:text-md max-w-48">{file.name}</p>
+                  <div onClick={handleRemoveFile} className="bg-red-600/30 text-red-700 cursor-pointer  rounded-lg p-1">
                     <MdClear />
                   </div>
                 </div>
               </div>
-              <div className="max-w-xl w-full bg-green-800/30 text-green-500 text-center p-2 rounded-xl hover:bg-green-800/50 active:scale-95 transition-all duration-300 cursor-pointer">
+              <div className="w-40 bg-green-700  text-neutral-50 text-center p-2 shadow-2xl shadow-green-500 dark:shadow-green-500/50 dark:bg-green-800 rounded-xl hover:bg-green-900 active:scale-95 transition-all duration-300 cursor-pointer">
                 <h3>Scan & Analyse</h3>
               </div>
             </div>

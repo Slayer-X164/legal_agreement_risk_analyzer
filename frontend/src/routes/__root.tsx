@@ -36,13 +36,13 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body className='bg-neutral-950 min-h-screen text-neutral-300 '>
+      <body className='bg-neutral-300 dark:bg-neutral-950 min-h-screen  text-neutral-900 dark:text-neutral-50 '>
 
-        <div className="min-h-screen flex-col flex items-center  bg-[repeating-linear-gradient(45deg,#262626_0px,#262626_1px,transparent_1px,transparent_20px)] ">
-          <div id='navbar-frame' className='w-full flex items-center justify-center border-b border-neutral-800 bg-neutral-950'>
+        <div className="min-h-screen flex-col flex items-center overflow-x-hidden  bg-[repeating-linear-gradient(45deg,#a1a1a1_0px,#a1a1a1_1px,transparent_1px,transparent_20px)] dark:bg-[repeating-linear-gradient(45deg,#262626_0px,#262626_1px,transparent_1px,transparent_20px)]">
+          <div id='navbar-frame' className='w-full flex items-center justify-center border-b border-neutral-400 dark:border-neutral-800 bg-neutral-300 dark:bg-neutral-950'>
             <Navbar />
           </div>
-          <main className='max-w-6xl  w-full p-8 border-x border-neutral-800 flex-1 bg-neutral-950'>
+          <main className='max-w-6xl  w-full overflow-x-hidden p-5 md:p-8 border-x border-neutral-400 dark:border-neutral-800 flex-1 bg-neutral-300 dark:bg-neutral-950'>
             {children}
           </main>
         </div>

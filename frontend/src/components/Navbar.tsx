@@ -1,19 +1,23 @@
 import { FaGithub } from "react-icons/fa"
 import Crosshair from "./Crosshair"
 import { Link } from "@tanstack/react-router"
+import Dark_Light_Switch from "./Dark_Light_Switch"
 
 
 const Navbar = () => {
   return (
-    <div className='max-w-6xl w-full  flex h-14 justify-between items-center px-8 border-x  border-neutral-800  relative'>
+    <div className='max-w-6xl w-full  flex h-16 justify-between items-center px-5 md:px-8 border-x dark:border-neutral-800 border-neutral-400  relative'>
       <div className='flex items-center gap-2'>
         <h1 className="font-bold">ClauseGaurd</h1>
-        <h3 className="px-2 py-1 text-sm rounded-sm bg-blue-600/20 text-blue-600">beta</h3>
+        <h3 className="px-2 py-1 text-sm rounded-sm bg-blue-600/20 text-blue-700">beta</h3>
       </div>
-      <a href="https://github.com/Slayer-X164/legal_agreement_risk_analyzer" target="_blank" className=" flex items-center gap-1.5 px-2 py-1 bg-indigo-800 rounded-lg cursor-pointer">
+      <div className="flex items-center gap-3 flex-row-reverse">
+        <a href="https://github.com/Slayer-X164/legal_agreement_risk_analyzer" target="_blank" className="text-neutral-50 shadow-lg shadow-indigo-500/40 flex items-center gap-1.5 px-3 py-1 bg-indigo-800 dark:shadow-indigo-700/30 rounded-lg cursor-pointer">
         <FaGithub />
-        <h3 className="text-sm">Give a Star</h3>
+        <h3 className="text-sm ">Give a Star</h3>
       </a >
+      <Dark_Light_Switch/>
+      </div>
       <Crosshair className="absolute -left-1.5 -bottom-1.5"/>
       <Crosshair className="absolute -right-1.5 -bottom-1.5"/>
     </div>
