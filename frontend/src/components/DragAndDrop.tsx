@@ -39,7 +39,7 @@ const DragAndDrop = () => {
 
   return (
     <>
-      <section className="border-2 max-w-2xl w-full h-86 rounded-3xl border-neutral-400 dark:border-neutral-700 bg-neutral-400/30 dark:bg-neutral-900/50 border-dashed mt-10 overflow-hidden">
+      <section className="border-2 max-w-2xl w-full h-86 rounded-3xl border-neutral-400 dark:border-neutral-700 bg-neutral-300/60 dark:bg-neutral-900/50 border-dashed mt-10 overflow-hidden">
         <div className="w-full h-full flex flex-col gap-4 items-center justify-center " onDrop={handleDrop} onDragOver={(e) => e.preventDefault()}>
           {!file ? (
             <>
@@ -56,7 +56,7 @@ const DragAndDrop = () => {
                 <div className="w-30"> <hr /></div>
 
               </div>
-              <div className="text-neutral-300 hover:bg-neutral-700 mt-2  transition-all duration-300 bg-neutral-800 rounded-lg active:scale-95">
+              <div className="text-neutral-200 hover:bg-neutral-700 mt-2  transition-all duration-300 bg-neutral-800 rounded-lg active:scale-95">
                 <input type="file" id="browse-file" hidden onChange={handleInputChange} accept=".pdf,.docx,.txt" />
                 <label htmlFor="browse-file" >
                   <h3 className="cursor-pointer px-4 py-2 text-md">Browse Files</h3>

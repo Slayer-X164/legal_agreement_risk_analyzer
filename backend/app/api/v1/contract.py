@@ -9,7 +9,7 @@ router = APIRouter()
 async def analyse(file: UploadFile = File()):
   try:
     data = await extract_text(file)
-    analysis = await analyse_text(data)
+    analysis = await analyse_text(data[:300])
     return {"output":analysis}
     # return analyseResponse(
     #     text=data,

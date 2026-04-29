@@ -38,7 +38,7 @@ const Dark_Light_Switch = () => {
       className=" flex items-center  rounded-full  transition-colors duration-300"
     >
       <div
-        className={` p-1.5 cursor-pointer relative  rounded-full bg-neutral-400/50 dark:bg-neutral-800 text-lg transform duration-300 flex items-center justify-center`}
+        className={` p-1.5 cursor-pointer relative  rounded-full bg-neutral-300/60 dark:bg-neutral-800 text-lg transform duration-300 flex items-center justify-center`}
       >
 
         {dark ? <IoMoonOutline className="text-neutral-400" /> : <IoSunnyOutline />}
