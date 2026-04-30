@@ -1,6 +1,6 @@
 
 type clause = {
-  id: number,
+  id: string,
   text: string,
   risk: string,
   reason: string,
@@ -10,6 +10,11 @@ type clause = {
 type resultType = {
   overall_score: number
   summary: string,
+  number_of_clauses:{
+    low:number,
+    medium:number,
+    high:number
+  }
   clauses: clause[]
 }
 

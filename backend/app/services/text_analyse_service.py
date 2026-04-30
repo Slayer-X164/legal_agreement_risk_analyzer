@@ -12,7 +12,12 @@ async def analyse_text(text:str):
     For each risky clause, return a JSON object with this exact structure:
   {{
     "overall_score": "<integer 0-100, where 0 is extremely dangerous and 100 is perfectly fair>",
-    "summary": "<2-3 sentence overall assessment>",
+    "summary": "<1-2 sentence overall assessment>",
+    "number_of_clauses": {{
+      "low":"<exact number of low risk clause>",
+      "medium":"<exact number of medium risk clause>",
+      "high":"<exact number of high risk clause>"
+    }}
     "clauses": [
       {{
         "id": "<unique string like c1, c2>",
@@ -34,7 +39,6 @@ async def analyse_text(text:str):
       {"role": "user", "content": prompt}
     ],
     temperature=0.2,
-    max_tokens=4000
   )
   raw = response.choices[0].message.content
 
