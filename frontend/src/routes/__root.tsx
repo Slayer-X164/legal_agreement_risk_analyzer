@@ -5,6 +5,7 @@ import { TanStackDevtools } from '@tanstack/react-devtools'
 import appCss from '../styles.css?url'
 import Navbar from '#/components/Navbar'
 
+import {QueryClient,QueryClientProvider} from "@tanstack/react-query"
 
 export const Route = createRootRoute({
   head: () => ({
@@ -43,7 +44,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             <Navbar />
           </div>
           <main className='max-w-6xl  w-full overflow-x-hidden p-5 md:p-8 border-x border-neutral-400 dark:border-neutral-800 flex-1 bg-neutral-50 dark:bg-neutral-950'>
-            {children}
+            <QueryClientProvider client={new QueryClient}>
+              {children}
+            </QueryClientProvider>
           </main>
         </div>
         <TanStackDevtools
