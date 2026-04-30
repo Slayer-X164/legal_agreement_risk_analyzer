@@ -29,12 +29,12 @@ async def analyse_text(text:str):
   {text}"""
 
   response = client.chat.completions.create(
-    model="google/gemini-2.5-flash",
+    model="google/gemini-2.5-flash-lite",
     messages=[
       {"role": "user", "content": prompt}
     ],
     temperature=0.2,
-    max_tokens=2500
+    max_tokens=4000
   )
   raw = response.choices[0].message.content
 

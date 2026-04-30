@@ -9,14 +9,10 @@ router = APIRouter()
 async def analyse(file: UploadFile = File()):
   try:
     data = await extract_text(file)
-    analysis = await analyse_text(data[:300])
-    return {"output":analysis}
-    # return analyseResponse(
-    #     text=data,
-    #     word_count=len(data.split()),
-    #     filename=file.filename,
-    #     file_type=file.filename.split(".")[-1]
-    # )
+    analysis = await analyse_text(data)
+    # analysis["raw_text_for_heatmap"] = data
+    return analysis
+
   except Exception as e:
     raise HTTPException(status_code=500,detail=str(e))
 

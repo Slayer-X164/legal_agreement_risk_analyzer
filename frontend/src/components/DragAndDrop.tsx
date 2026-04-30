@@ -2,9 +2,15 @@ import { useState } from "react"
 import { MdClear } from "react-icons/md"
 import { RxDownload } from "react-icons/rx"
 import File from "./File"
+import { useNavigate } from "@tanstack/react-router"
+import Loading from "./Loading"
+
 
 const DragAndDrop = () => {
   const [file, setFile] = useState<File | null>()
+  const [result,setResult] = useState<resultType>()
+  const [loading,setLoading] = useState<boolean>(false)
+  const navigate = useNavigate()
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files?.[0];
@@ -26,21 +32,28 @@ const DragAndDrop = () => {
   const formdata = new FormData()
   if (file) {
     formdata.append("file", file)
+
   }
   const handleFileUpload = async () => {
-
+    setLoading(true)
     const res = await fetch(`http://127.0.0.1:8000/api/analyse`, {
       method: "POST",
       body: formdata
     })
     const data = await res.json()
-    console.log(data)
+    if(!res.ok){
+      throw new Error(data.detail)
+    }
+    setResult(data)
+    navigate({ to: '/results' })
+    setLoading(false)
   }
-
+  console.log(result)
   return (
     <>
-      <section className="border-2 max-w-2xl w-full h-86 rounded-3xl border-neutral-400 dark:border-neutral-700 bg-neutral-300/60 dark:bg-neutral-900/50 border-dashed mt-10 overflow-hidden">
-        <div className="w-full h-full flex flex-col gap-4 items-center justify-center " onDrop={handleDrop} onDragOver={(e) => e.preventDefault()}>
+      <section className=" max-w-2xl w-full h-86 rounded-3xl  mt-10 overflow-hidden ">
+        {!loading?(
+          <div className="w-full h-full flex flex-col gap-4 items-center justify-center rounded-3xl border-2 border-neutral-400 dark:border-neutral-700 bg-neutral-300/60 dark:bg-neutral-900/50 border-dashed" onDrop={handleDrop} onDragOver={(e) => e.preventDefault()}>
           {!file ? (
             <>
               <div className="flex flex-col items-center justify-center">
@@ -80,6 +93,9 @@ const DragAndDrop = () => {
             </div>
           )}
         </div>
+        ):(
+          <Loading fileName={file?file.name:""} />
+        )}
       </section>
 
     </>
