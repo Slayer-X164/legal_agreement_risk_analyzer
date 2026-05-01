@@ -1,37 +1,33 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
-
+import { useThemeStore } from "#/store/useStore";
 const Dark_Light_Switch = () => {
-  const [dark, setDark] = useState(false);
-  useEffect(() => {
-    // load saved theme
-    const saved = localStorage.getItem("theme");
+const theme = useThemeStore((s) => s.theme)
+const setTheme = useThemeStore((s) => s.setTheme)
 
-    if (saved === "dark") {
-      setDark(true);
-      document.documentElement.classList.add("dark");
-    } else if (!saved) {
-      // system preference
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      if (prefersDark) {
-        setDark(true);
-        document.documentElement.classList.add("dark");
-      }
-    }
-  }, []);
-  const toggleTheme = () => {
-    const html = document.documentElement;
+useEffect(() => {
+  const saved = localStorage.getItem("theme")
 
-    if (dark) {
-      html.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    } else {
-      html.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    }
+  let initialTheme:Theme = "light"
 
-    setDark(!dark);
+  if (saved === "dark") {
+    initialTheme = "dark"
+  } else if (!saved) {
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
+    if (prefersDark) initialTheme = "dark"
   }
+
+  setTheme(initialTheme)
+  document.documentElement.classList.toggle("dark", initialTheme === "dark")
+}, [])
+
+const toggleTheme = () => {
+  const newTheme = theme === "dark" ? "light" : "dark"
+
+  setTheme(newTheme)
+  localStorage.setItem("theme", newTheme)
+  document.documentElement.classList.toggle("dark", newTheme === "dark")
+}
   return (
     <button
       onClick={toggleTheme}
@@ -41,7 +37,7 @@ const Dark_Light_Switch = () => {
         className={` p-1.5 cursor-pointer relative  rounded-full bg-neutral-300/60 dark:bg-neutral-800 text-lg transform duration-300 flex items-center justify-center`}
       >
 
-        {dark ? <IoMoonOutline className="text-neutral-400" /> : <IoSunnyOutline />}
+        {theme == "dark" ? <IoMoonOutline className="text-neutral-400" /> : <IoSunnyOutline />}
       </div>
     </button>
   )

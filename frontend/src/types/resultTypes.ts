@@ -22,3 +22,9 @@ type resultStore = {
   result: resultType | null,
   setResult: (result: resultType) => void;
 }
+
+type Theme = "dark" | "light" | null
+type themeStore = {
+  theme: Theme,
+  setTheme: (theme:Theme) => void
+}

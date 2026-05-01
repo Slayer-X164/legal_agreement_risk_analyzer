@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { useResultStore } from "@/store/useResultStore";
+import { useResultStore } from "#/store/useStore";
 import { useNavigate } from "@tanstack/react-router";
 
 export const useUploadFile = () => {
@@ -24,7 +24,7 @@ export const useUploadFile = () => {
 
     onSuccess: (data) => {
       setResult(data);
-      navigate({ to: "/results" }); 
+      navigate({ to: "/results" });
     },
 
     onError: (err: any) => {

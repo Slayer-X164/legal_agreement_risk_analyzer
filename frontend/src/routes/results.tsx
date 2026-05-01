@@ -1,6 +1,6 @@
 import ResultNotFound from '#/components/resultsPageComponents/ResultNotFound'
 import { ScoreCard } from '#/components/resultsPageComponents/ScoreCard'
-import { useResultStore } from '#/store/useResultStore'
+import { useResultStore } from '#/store/useStore'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/results')({
