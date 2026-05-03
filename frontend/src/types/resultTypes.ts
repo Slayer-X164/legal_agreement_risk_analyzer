@@ -28,3 +28,8 @@ type themeStore = {
   theme: Theme,
   setTheme: (theme:Theme) => void
 }
+type result = "heatmap" | "list" 
+type typeOfResultStore = {
+  typeOfResult: result,
+  setTypeOfResult: (type:result)=>void
+}

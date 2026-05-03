@@ -5,7 +5,7 @@ from app.schemas.contract_schema import analyseResponse
 
 router = APIRouter()
 
-@router.post("")
+@router.post("",response_model=analyseResponse)
 async def analyse(file: UploadFile = File()):
   try:
     data = await extract_text(file)
