@@ -1,7 +1,8 @@
-import { useThemeStore } from "#/store/useStore";
+import { useResultStore, useThemeStore } from "#/store/useStore";
 
-export const ScoreCard = ({result}:{result:resultType}) => {
-
+export const ScoreCard = () => {
+  const {result} = useResultStore()
+ if(!result) return
   return (
     <div className='bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 h-44 w-full rounded-3xl flex items-center gap-4 px-8'>
       <ScoreRing score={result.overall_score} />

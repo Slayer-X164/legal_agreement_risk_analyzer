@@ -86,7 +86,7 @@ function RouteComponent() {
     <>
       {result != null ? (
         <div className='flex flex-col gap-3 flex-1 w-full h-full  '>
-          <ScoreCard result={result} />
+          <ScoreCard />
           <TypeButtons />
           <Display/>
         </div>
