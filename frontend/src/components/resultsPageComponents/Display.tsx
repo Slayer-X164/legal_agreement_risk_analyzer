@@ -1,6 +1,7 @@
 import { useTypeOfResultStore } from "#/store/useStore";
 import ClauseList from "./ClauseList";
 import DocumentHeatmap from "./DocumentHeatmap";
+import RightDisplay from "./RightDisplay";
 
 export const Display = () => {
   const typeOfResult = useTypeOfResultStore(s=>s.typeOfResult)
@@ -13,7 +14,7 @@ export const Display = () => {
           <ClauseList/>
         )}
       </div>
-      <div className='flex-1 bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl'></div>
+      <RightDisplay/>
     </div>
   )
 }

@@ -1,4 +1,9 @@
-
+type documentNameStore = {
+  name:string
+  setName:(name:string)=>void
+  type:string
+  setTypeOfDocument:(type:string)=>void
+}
 type clause = {
   id: string,
   text: string,
@@ -35,3 +40,8 @@ type typeOfResultStore = {
 }
 
 type RiskLevel = "high"|"medium"|"low"
+
+type selectedClauseStore = {
+  selectedClauseId:string,
+  setSelectedClause:(clauseId:string)=>void
+}

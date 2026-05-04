@@ -4,10 +4,14 @@ import { RxDownload } from "react-icons/rx"
 import File from "./File"
 import Loading from "./Loading"
 import { useUploadFile } from "#/hooks/useUploadFile"
+import { useDocumentNameStore } from "#/store/useStore"
 
 const DragAndDrop = () => {
   const [file, setFile] = useState<File | null>()
   const { mutate, isPending } = useUploadFile()
+  const setName = useDocumentNameStore((s)=>s.setName)
+  const setType = useDocumentNameStore((s)=>s.setTypeOfDocument)
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files?.[0];
     if (selectedFile) {
@@ -30,6 +34,8 @@ const DragAndDrop = () => {
     const formdata = new FormData()
     if (file) {
       formdata.append("file", file)
+      setName(file?.name.split(".")[0])
+      setType(file?.name.split('.').pop() ?? "")
     }
     mutate(formdata)
   }

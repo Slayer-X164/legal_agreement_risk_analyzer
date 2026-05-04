@@ -1,6 +1,4 @@
 import { useResultStore, useSelectedClauseStore } from "#/store/useStore"
-import { useState } from "react";
-import { GoDotFill } from "react-icons/go";
 
 const result = {
   "overall_score": 30,
@@ -69,55 +67,34 @@ const result = {
     }
   ]
 }
+const RightDisplay = () => {
+  const selectedClauseId = useSelectedClauseStore((s) => s.selectedClauseId)
+  //  const result = useResultStore((s)=>s.result)
 
-const ClauseList = () => {
-  // const {result} = useResultStore()
-  const selectedClauseId = useSelectedClauseStore((s)=>s.selectedClauseId)
-  const setSelectedClause = useSelectedClauseStore((s)=>s.setSelectedClause)
-  const riskStyles: Record<RiskLevel, {
-    text: string;
-    bg: string;
-    border: string;
-  }> = {
-    high: {
-      text: "text-red-600",
-      bg: "bg-red-400/10",
-      border: "border-red-600",
-    },
-    medium: {
-      text: "text-yellow-600",
-      bg: "bg-yellow-400/10",
-      border: "border-yellow-600",
-    },
-    low: {
-      text: "text-green-600",
-      bg: "bg-green-400/10",
-      border: "border-green-600",
-    },
-  };
-  console.log(selectedClauseId);
-  const handleClick = (id: string) => {
-    setSelectedClause(id)
-  }
+  const clause = result?.clauses.find(c => c.id === selectedClauseId)
+
+
   return (
-    <div className="relative w-full h-full">
-      <div className="w-full h-full overflow-y-auto scrollbar-hide p-3 flex flex-col gap-3 ">
-        {result && result.clauses.map(({ id, text, risk, category }) => {
-          const style = riskStyles[risk as RiskLevel];
-          return (
-            <div key={id} onClick={()=>handleClick(id)} className="cursor-pointer flex items-start flex-col gap-2 border bg-neutral-50 dark:bg-neutral-800/50 dark:border-neutral-700/50 border-neutral-300 p-2 rounded-2xl">
-              <div className="flex items-center justify-between gap-2 text-xs w-full ">
-                <h3 className={`flex items-center gap-1 font-semibold  ${style.text}`}><GoDotFill />{risk} Risk</h3>
-                <h3 className={`py-0.5 px-2 text-blue-500 bg-blue-600/15 dark:text-blue-500 font-semibold rounded-full  `}>{category}</h3>
-              </div>
-              <h2 className="text-base line-clamp-2 max-w-full dark:text-neutral-300/90">{text}</h2>
-            </div>
-          )
-        })}
-      </div>
-      <div className="pointer-events-none absolute bottom-0 left-0 w-full h-16 bg-linear-to-t from-neutral-300 dark:from-neutral-950 to-transparent" />
-    </div>
+    <>
+      {clause && (
+        <div className='flex-1 bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl'>
+          <div>
+            <h3>{clause.risk} risk</h3>
+            <h3>{clause.category}</h3>
+          </div>
+          <h1>{clause.text}</h1>
+          <div>
+            <h3>why it's risky</h3>
+            <h2>{clause.reason}</h2>
+          </div>
+          <div>
+            <h2>Suggested Rewrite</h2>
+            <h3>{clause.suggestion.length > 0 ? clause.suggestion : "No Rewrite Required" }</h3>
+          </div>
+        </div>
+      )}
+    </>
   )
 }
 
-export default ClauseList
+export default RightDisplay
