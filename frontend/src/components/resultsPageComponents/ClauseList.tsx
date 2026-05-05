@@ -1,5 +1,4 @@
 import { useResultStore, useSelectedClauseStore } from "#/store/useStore"
-import { useState } from "react";
 import { GoDotFill } from "react-icons/go";
 
 const result = {
@@ -108,7 +107,7 @@ const ClauseList = () => {
             <div key={id} onClick={()=>handleClick(id)} className="cursor-pointer flex items-start flex-col gap-2 border bg-neutral-50 dark:bg-neutral-800/50 dark:border-neutral-700/50 border-neutral-300 p-2 rounded-2xl">
               <div className="flex items-center justify-between gap-2 text-xs w-full ">
                 <h3 className={`flex items-center gap-1 font-semibold  ${style.text}`}><GoDotFill />{risk} Risk</h3>
-                <h3 className={`py-0.5 px-2 text-blue-500 bg-blue-600/15 dark:text-blue-500 font-semibold rounded-full  `}>{category}</h3>
+                <h3 className={`py-0.5 px-2 text-blue-500 bg-blue-600/15 dark:text-blue-500 rounded-full  `}>{category}</h3>
               </div>
               <h2 className="text-base line-clamp-2 max-w-full dark:text-neutral-300/90">{text}</h2>
             </div>

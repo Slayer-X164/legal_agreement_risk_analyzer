@@ -1,4 +1,5 @@
 import { useResultStore, useSelectedClauseStore } from "#/store/useStore"
+import { GoDotFill } from "react-icons/go"
 
 const result = {
   "overall_score": 30,
@@ -70,26 +71,52 @@ const result = {
 const RightDisplay = () => {
   const selectedClauseId = useSelectedClauseStore((s) => s.selectedClauseId)
   //  const result = useResultStore((s)=>s.result)
-
   const clause = result?.clauses.find(c => c.id === selectedClauseId)
+  const riskStyles: Record<RiskLevel, {
+    text: string;
+    bg: string;
+    border: string;
+  }> = {
+    high: {
+      text: "text-red-600",
+      bg: "bg-red-400/10",
+      border: "border-red-600",
+    },
+    medium: {
+      text: "text-yellow-600",
+      bg: "bg-yellow-400/10",
+      border: "border-yellow-600",
+    },
+    low: {
+      text: "text-green-600",
+      bg: "bg-green-400/10",
+      border: "border-green-600",
+    },
+  };
+  const style = riskStyles[clause?.risk as RiskLevel]
 
 
   return (
     <>
       {clause && (
-        <div className='flex-1 bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl'>
-          <div>
-            <h3>{clause.risk} risk</h3>
-            <h3>{clause.category}</h3>
+        <div className='p-4 flex-1 gap-6 flex flex-col text-sm overflow-y-auto dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-3xl'>
+          <div className="flex items-center justify-between">
+            <h3 className={`${style.text} flex items-center gap-1`}><GoDotFill />{clause.risk} risk</h3>
+            <h3 className="py-0.5 px-2 text-sm text-blue-500 bg-blue-600/15 dark:text-blue-500  rounded-full  ">{clause.category}</h3>
           </div>
-          <h1>{clause.text}</h1>
-          <div>
-            <h3>why it's risky</h3>
-            <h2>{clause.reason}</h2>
+          <div className="flex items-center">
+            <div className="border-l-2 border-neutral-400 dark:border-neutral-600 px-3">
+              <h1 className="italic  text-neutral-500">"{clause.text}"</h1>
+            </div>
+
           </div>
           <div>
-            <h2>Suggested Rewrite</h2>
-            <h3>{clause.suggestion.length > 0 ? clause.suggestion : "No Rewrite Required" }</h3>
+            <h3 className="font-semibold text-neutral-400 uppercase dark:text-neutral-600">why it's risky</h3>
+            <h2 className="text-base dark:text-neutral-400">{clause.reason}</h2>
+          </div>
+          <div className="p-3 rounded-2xl border border-green-600 bg-green-600/20 text-green-700 dark:bg-green-950 dark:text-green-600 dark:border-green-800">
+            <h2 className="font-bold uppercase pb-1 ">Suggested Rewrite</h2>
+            <h3 className="font-semibold font-serif text-base">{clause.suggestion.length > 0 ? clause.suggestion : "No Rewrite Required" }</h3>
           </div>
         </div>
       )}

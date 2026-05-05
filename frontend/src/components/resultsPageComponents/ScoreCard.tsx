@@ -72,7 +72,7 @@ export const ScoreCard = () => {
   const name = useDocumentNameStore((s)=>s.name)
   const type = useDocumentNameStore((s)=>s.type)
   return (
-    <div className='bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 h-40 w-full rounded-3xl flex items-center gap-4 px-8'>
+    <div className='bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 h-40 w-full rounded-3xl flex items-center gap-4 px-8'>
       <ScoreRing score={result.overall_score} />
       <div className='flex flex-col gap-2'>
         <h3 className='text-sm text-neutral-400 dark:text-neutral-600 font-semibold'>{name}.{type}</h3>
