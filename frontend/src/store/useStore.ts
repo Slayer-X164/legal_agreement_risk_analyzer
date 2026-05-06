@@ -18,10 +18,6 @@ export const useThemeStore = create<themeStore>((set)=>({
   setTheme: (theme)=>set({theme})
 }))
 
-export const useTypeOfResultStore = create<typeOfResultStore>((set)=>({
-  typeOfResult:"heatmap",
-  setTypeOfResult: (type)=>set({typeOfResult:type})
-}))
 
 export const useSelectedClauseStore = create<selectedClauseStore>((set)=>({
   selectedClauseId:"c1",

@@ -19,15 +19,36 @@ async def extract_text(file):
 
 
 def extract_pdf(content: bytes) -> str:
-    text = ""
+    pages = []
     with pdfplumber.open(BytesIO(content)) as pdf:
         for page in pdf.pages:
-            page_text = page.extract_text()
+            page_text = page.extract_text(layout=True)
             if page_text:
-                text += page_text + "\n"
-    return text
+                # Split into lines, group into paragraphs by blank lines
+                lines = page_text.splitlines()
+                paragraphs = []
+                current = []
+                for line in lines:
+                    if line.strip():
+                        current.append(line.strip())
+                    else:
+                        if current:
+                            paragraphs.append(" ".join(current))
+                            current = []
+                if current:
+                    paragraphs.append(" ".join(current))
+                pages.append("\n\n".join(paragraphs))
+    return "\n\n".join(pages)
 
 
 def extract_docx(content: bytes) -> str:
     doc = Document(BytesIO(content))
-    return "\n".join([para.text for para in doc.paragraphs if para.text.strip()])
+    paragraphs = []
+    for para in doc.paragraphs:
+        if para.text.strip():
+            paragraphs.append(para.text.strip())
+        else:
+            # Empty paragraph = intentional spacing, add blank line
+            if paragraphs and paragraphs[-1] != "":
+                paragraphs.append("")
+    return "\n\n".join(p for p in paragraphs if p != "")

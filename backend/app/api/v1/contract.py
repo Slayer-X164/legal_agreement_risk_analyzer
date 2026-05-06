@@ -10,7 +10,7 @@ async def analyse(file: UploadFile = File()):
   try:
     data = await extract_text(file)
     analysis = await analyse_text(data)
-    # analysis["raw_text_for_heatmap"] = data
+    analysis["full_raw_doc"] = data
     return analysis
 
   except Exception as e:

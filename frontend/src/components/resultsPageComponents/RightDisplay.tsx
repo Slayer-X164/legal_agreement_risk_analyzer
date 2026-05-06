@@ -99,24 +99,24 @@ const RightDisplay = () => {
   return (
     <>
       {clause && (
-        <div className='p-4 flex-1 gap-6 flex flex-col text-sm overflow-y-auto dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-3xl'>
-          <div className="flex items-center justify-between">
+        <div className='p-4 flex-1 gap-4 flex flex-col text-xs overflow-y-auto dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-3xl'>
+          <div className="flex items-center justify-between text-sm">
             <h3 className={`${style.text} flex items-center gap-1`}><GoDotFill />{clause.risk} risk</h3>
-            <h3 className="py-0.5 px-2 text-sm text-blue-500 bg-blue-600/15 dark:text-blue-500  rounded-full  ">{clause.category}</h3>
+            <h3 className="py-0.5 px-2  text-blue-500 bg-blue-600/15 dark:text-blue-500  rounded-full  ">{clause.category}</h3>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center ">
             <div className="border-l-2 border-neutral-400 dark:border-neutral-600 px-3">
-              <h1 className="italic  text-neutral-500">"{clause.text}"</h1>
+              <h1 className="italic  text-neutral-500 text-[13px]">"{clause.text}"</h1>
             </div>
 
           </div>
-          <div>
-            <h3 className="font-semibold text-neutral-400 uppercase dark:text-neutral-600">why it's risky</h3>
+          <div className="text-sm">
+            <h3 className="font-semibold text-neutral-400 uppercase tracking-widest pb-1 dark:text-neutral-400">why it's risky</h3>
             <h2 className="text-base dark:text-neutral-400">{clause.reason}</h2>
           </div>
           <div className="p-3 rounded-2xl border border-green-600 bg-green-600/20 text-green-700 dark:bg-green-950 dark:text-green-600 dark:border-green-800">
-            <h2 className="font-bold uppercase pb-1 ">Suggested Rewrite</h2>
-            <h3 className="font-semibold font-serif text-base">{clause.suggestion.length > 0 ? clause.suggestion : "No Rewrite Required" }</h3>
+            <h2 className="font-semibold uppercase pb-1 tracking-widest">Suggested Rewrite</h2>
+            <h3 className="font-light font-sans text-base">{clause.suggestion.length > 0 ? clause.suggestion : "No Rewrite Required" }</h3>
           </div>
         </div>
       )}

@@ -20,7 +20,8 @@ type resultType = {
     medium:number,
     high:number
   }
-  clauses: clause[]
+  clauses: clause[],
+  full_raw_doc:string
 }
 
 type resultStore = {
@@ -32,11 +33,6 @@ type Theme = "dark" | "light" | null
 type themeStore = {
   theme: Theme,
   setTheme: (theme:Theme) => void
-}
-type result = "heatmap" | "list"
-type typeOfResultStore = {
-  typeOfResult: result,
-  setTypeOfResult: (type:result)=>void
 }
 
 type RiskLevel = "high"|"medium"|"low"

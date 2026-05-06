@@ -19,4 +19,5 @@ class analyseResponse(BaseModel):
   summary: str
   number_of_clauses:clauseLevels
   clauses: List[clause]
+  full_raw_doc:str
 
