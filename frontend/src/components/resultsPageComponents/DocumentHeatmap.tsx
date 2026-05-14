@@ -60,12 +60,12 @@ const DocumentHeatmap = () => {
   return (
     <div className=" h-full flex-1  flex flex-col overflow-hidden  dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl">
       {/* top bar */}
-      <div className="w-full flex justify-between border-b border-neutral-300 dark:border-neutral-800 px-4 py-2">
-        <div className="flex items-center gap-1">
-          <IoDocumentTextOutline className="text-sm text-neutral-500" />
-          <h3 className="text-sm text-neutral-500">{name}.{type}</h3>
+      <div className="w-full flex justify-center md:justify-between border-b border-neutral-300 dark:border-neutral-800 px-4 py-2">
+        <div className="flex items-center gap-1 md:text-sm text-xs">
+          <IoDocumentTextOutline className=" text-neutral-500" />
+          <h3 className=" text-neutral-500">{name}.{type}</h3>
         </div>
-        <div className="flex text-sm items-center gap-4 text-neutral-500 dark:text-neutral-400">
+         <div className="hidden md:flex text-xs md:text-sm items-center gap-4 text-neutral-500 dark:text-neutral-400">
           <div className="flex items-center gap-1">
             <div className="w-2.5 h-2.5 border bg-red-300 border-red-600" />
             <h3 >High</h3>
@@ -82,7 +82,7 @@ const DocumentHeatmap = () => {
         </div>
       </div>
       {/* document heatmap */}
-      <div className="text-container overflow-y-auto p-4 text-neutral-800 dark:text-neutral-300">
+      <div className="text-container h-90 md:h-full overflow-y-auto p-4 text-neutral-800 dark:text-neutral-300">
         {segments.map((seg, i) => {
           const {setSelectedClause,selectedClauseId} = useSelectedClauseStore(s=>s)
           // plain text no clause
@@ -98,12 +98,10 @@ const DocumentHeatmap = () => {
               key={i}
               onMouseEnter={() => setHoveredId(clause.id)}
               onMouseLeave={() => setHoveredId(null)}
-              onClick={() => setSelectedClause(
-                selectedClauseId === clause.id ?"": clause.id
-              )}
+              onClick={() => setSelectedClause(clause.id)}
               style={{
                 background: isActive ? cfg.highlightHover : cfg.highlight,
-                borderBottom: `2px solid ${cfg.tag} dark:${cfg.darkTag}`,
+                borderBottom: `2px solid ${cfg.tag} `,
                 borderRadius: "3px",
                 padding: "1px 3px",
                 cursor: "pointer",
@@ -116,9 +114,23 @@ const DocumentHeatmap = () => {
         })}
       </div>
       {/* bottom bar */}
-      {/* <div className="w-full flex justify-center text-neutral-500 dark:text-neutral-400 items-center border-t border-neutral-300 dark:border-neutral-800 px-4 py-1">
-        <h3>{result?.clauses.length} clauses</h3>
-      </div> */}
+      <div className="md:hidden w-full flex justify-center text-neutral-500 dark:text-neutral-400 items-center border-t border-neutral-300 dark:border-neutral-800 px-4 py-2">
+         <div className="flex text-xs md:text-sm items-center gap-4 text-neutral-500 dark:text-neutral-400">
+          <div className="flex items-center gap-1">
+            <div className="w-2.5 h-2.5 border bg-red-300 border-red-600" />
+            <h3 >High</h3>
+          </div>
+          <div className="flex items-center gap-1">
+            <div className="w-2.5 h-2.5 border bg-yellow-300 border-yellow-600" />
+            <h3 >Medium</h3>
+          </div>
+          <div className="flex items-center gap-1">
+            <div className="w-2.5 h-2.5 border bg-emerald-300 border-emerald-600" />
+            <h3 >Low</h3>
+          </div>
+
+        </div>
+      </div>
     </div>
   )
 }

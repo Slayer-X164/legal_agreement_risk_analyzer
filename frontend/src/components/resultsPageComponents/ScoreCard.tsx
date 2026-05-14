@@ -7,9 +7,9 @@ export const ScoreCard = () => {
   // const type = useDocumentNameStore((s)=>s.type)
   if(!result) return
   return (
-    <div className='bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 h-40 w-full rounded-2xl flex items-center gap-4 px-8'>
+    <div className='bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 md:h-40 w-full rounded-2xl flex flex-col md:flex-row items-center  gap-4 p-6'>
       <ScoreRing score={result.overall_score} />
-      <div className='flex flex-col gap-2'>
+      <div className='flex flex-col items-center md:items-start text-center md:text-start gap-2'>
         <h3 className='text-sm text-neutral-400 dark:text-neutral-600 font-semibold'>{name}</h3>
         <h2 className='text-sm font-semibold text-neutral-700 dark:text-neutral-400'>{result.summary}</h2>
         <div className='flex items-center gap-3'>

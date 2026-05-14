@@ -23,8 +23,23 @@ The PDF heatmap UI. Rendering the original contract with coloured overlays (red 
 Structured AI output + validation. Using Pydantic to enforce schema on LLM responses shows you know that raw LLM output isn't production-ready — you need error handling, retries, and structured parsing. This is a real engineering skill.
 
 
-heatmap
-RAG
+RAG->
+"""
+When AI detects risky clause:
+
+"The company may terminate without notice..."
+
+You retrieve:
+
+standard employment clause
+fair industry wording
+safer rewrite examples
+
+Then AI uses THAT to generate:
+
+better explanation
+better rewrite
+"""
+
 Rate Limit
-chunking
 llm call fallback

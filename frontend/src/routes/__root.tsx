@@ -43,7 +43,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           <div id='navbar-frame' className='w-full flex items-center justify-center border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950'>
             <Navbar />
           </div>
-          <main className='max-w-7xl h-[calc(100vh-57px)] w-full overflow-x-hidden py-4 px-4 border-x border-neutral-300 dark:border-neutral-800  bg-neutral-50 dark:bg-neutral-950'>
+          <main className='max-w-7xl h-full md:h-[calc(100vh-57px)] w-full overflow-x-hidden p-2 md:px-4 border-x border-neutral-300 dark:border-neutral-800  bg-neutral-50 dark:bg-neutral-950'>
             <QueryClientProvider client={new QueryClient}>
               {children}
             </QueryClientProvider>

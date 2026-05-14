@@ -1,14 +1,16 @@
 from openai import OpenAI
 from app.core.config import settings
 import json
+import re
+
 client = OpenAI(
-  api_key=settings.openrouter_api_key,
-  base_url="https://openrouter.ai/api/v1"
+    api_key=settings.openrouter_api_key, base_url="https://openrouter.ai/api/v1"
 )
 
-async def analyse_text(text:str):
 
-  prompt = f"""You are a contract law analyst. Analyse the following contract and identify risky clauses.
+async def analyse_text(text: str):
+
+    prompt = f"""You are a contract law analyst. Analyse the following contract and identify risky clauses.
     For each risky clause, return a JSON object with this exact structure:
   {{
     "overall_score": "<integer 0-100, where 0 is extremely dangerous and 100 is perfectly fair>",
@@ -33,21 +35,24 @@ async def analyse_text(text:str):
   CONTRACT:
   {text}"""
 
-  response = client.chat.completions.create(
-    model="deepseek/deepseek-v4-flash:free",
-    messages=[
-      {"role": "user", "content": prompt}
-    ],
-    temperature=1
-  )
-  raw = response.choices[0].message.content
+    response = client.chat.completions.create(
+        model="openai/gpt-oss-120b:free",
+        messages=[
+            {
+                "role": "system",
+                "content": "You are a legal contract risk analyzer that only returns valid JSON.",
+            },
+            {"role": "user", "content": prompt},
+        ],
+        temperature=0.1,
+        max_tokens=1200,
+    )
+    raw = response.choices[0].message.content
 
-  cleaned = raw.strip()
-  if cleaned.startswith("```"):
-    cleaned = cleaned.split("```")[1]
-    if cleaned.startswith("json"):
-        cleaned = cleaned[4:]
-  cleaned = cleaned.strip()
+    match = re.search(r"\{.*\}", raw, re.DOTALL)
 
-  data = json.loads(cleaned)
-  return data
+    if not match:
+      raise Exception("No JSON found")
+
+    data = json.loads(match.group())
+    return data

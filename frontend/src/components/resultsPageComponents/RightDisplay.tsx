@@ -1,6 +1,6 @@
 import { useResultStore, useSelectedClauseStore } from "#/store/useStore"
 import { GoDotFill } from "react-icons/go"
-
+import { BsStars } from "react-icons/bs";
 
 const RightDisplay = () => {
   const selectedClauseId = useSelectedClauseStore((s) => s.selectedClauseId)
@@ -17,7 +17,7 @@ const RightDisplay = () => {
       border: "border-red-600",
     },
     medium: {
-      text: "text-yellow-600",
+      text: "text-yellow-500",
       bg: "bg-yellow-400/10",
       border: "border-yellow-600",
     },
@@ -36,8 +36,8 @@ const RightDisplay = () => {
       {clause && (
         <div className='p-4 flex-1 gap-4 flex flex-col text-xs overflow-y-auto dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl'>
           <div className="flex items-center justify-between text-sm">
-            <h3 className={`${style.text} flex items-center gap-1`}><GoDotFill />{clause.risk} risk</h3>
-            <h3 className="py-0.5 px-2  text-blue-500 bg-blue-600/15 dark:text-blue-500  rounded-full  ">{clause.category}</h3>
+            <h3 className={`${style.text} flex items-center gap-1 capitalize font-semibold`}><GoDotFill />{clause.risk} risk</h3>
+            <h3 className="py-1 px-2 text-xs  text-neutral-500 bg-neutral-600/15 dark:bg-neutral-600/25 dark:text-neutral-500  rounded-full font-semibold ">{clause.category}</h3>
           </div>
           <div className="flex items-center ">
             <div className="border-l-2 border-neutral-400 dark:border-neutral-600 px-3">
@@ -46,12 +46,12 @@ const RightDisplay = () => {
 
           </div>
           <div className="text-sm">
-            <h3 className="font-semibold text-neutral-400 uppercase tracking-widest pb-1 dark:text-neutral-400">reason</h3>
-            <h2 className="text-base dark:text-neutral-400">{clause.reason}</h2>
+            <h3 className="font-semibold text-neutral-600 uppercase tracking-widest pb-1 dark:text-neutral-400">reason</h3>
+            <h2 className="text-base dark:text-neutral-400 leading-5">{clause.reason}</h2>
           </div>
-          <div className="p-3 rounded-2xl border border-indigo-600 bg-indigo-600/20 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-600 dark:border-emerald-800">
-            <h2 className="font-semibold uppercase pb-1 tracking-widest">Suggested Rewrite</h2>
-            <h3 className=" font-sans text-base">{clause.suggestion.length > 0 ? clause.suggestion : "No Rewrite Required" }</h3>
+          <div className="p-3 rounded-2xl border border-indigo-300 bg-indigo-600/20 text-indigo-700 dark:bg-indigo-600/10 dark:text-indigo-300 dark:border-indigo-400/20">
+            <h2 className="font-semibold uppercase pb-1 text-sm tracking-widest flex items-center gap-1"><BsStars className="text-lg"/>Suggested Rewrite</h2>
+            <h3 className=" font-sans text-base leading-5">{clause.suggestion.length > 0 ? clause.suggestion : "No Rewrite Required" }</h3>
           </div>
         </div>
       )}

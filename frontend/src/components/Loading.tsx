@@ -6,11 +6,11 @@ interface AnalyzingStateProps {
 }
 
 const STEPS = [
-  { label: "Parsing document", delay: 800 },
-  { label: "Splitting into clauses", delay: 1800 },
-  { label: "Analysing each clause", delay: 2800 },
-  { label: "Scoring risk levels", delay: 3800 },
-  { label: "Generating suggestions", delay: 4800 },
+  { label: "Parsing document", delay: 2000 },
+  { label: "Splitting into clauses", delay: 4000 },
+  { label: "Analysing each clause", delay: 6000 },
+  { label: "Scoring risk levels", delay: 8000 },
+  { label: "Generating suggestions", delay: 10000 },
 ];
 
 export default function Loading({ fileName }: AnalyzingStateProps) {
