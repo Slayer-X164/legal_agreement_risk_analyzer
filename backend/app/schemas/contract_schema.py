@@ -3,6 +3,7 @@ from typing import List
 
 class clause(BaseModel):
   id: str
+  category: str
   text: str
   risk: str
   reason: str

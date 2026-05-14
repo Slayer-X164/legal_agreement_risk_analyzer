@@ -1,16 +1,16 @@
 import { useState } from "react"
-import { MdClear } from "react-icons/md"
 import { RxDownload } from "react-icons/rx"
 import File from "./File"
 import Loading from "./Loading"
 import { useUploadFile } from "#/hooks/useUploadFile"
 import { useDocumentNameStore } from "#/store/useStore"
+import { IoTrashOutline } from "react-icons/io5"
 
 const DragAndDrop = () => {
   const [file, setFile] = useState<File | null>()
   const { mutate, isPending } = useUploadFile()
-  const setName = useDocumentNameStore((s)=>s.setName)
-  const setType = useDocumentNameStore((s)=>s.setTypeOfDocument)
+  const setName = useDocumentNameStore((s) => s.setName)
+  const setType = useDocumentNameStore((s) => s.setTypeOfDocument)
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files?.[0];
@@ -68,19 +68,19 @@ const DragAndDrop = () => {
                 </div>
               </>
             ) : (
-              <div className="flex flex-col items-center gap-8">
-                <div className="flex flex-col items-center justify-center gap-2">
+              <div className="flex flex-col items-center gap-8 ">
+                <div className="flex flex-col items-center justify-center gap-3">
                   <File />
-                  <div className="flex gap-3 items-center">
-                    <p className="text-sm md:text-md max-w-48">{file.name}</p>
-                    <div onClick={handleRemoveFile} className="bg-red-600/30 text-red-700 cursor-pointer  rounded-lg p-1">
-                      <MdClear />
-                    </div>
-                  </div>
+                  <p className="text-sm md:text-md ">{file.name}</p>
                 </div>
-                <button onClick={handleFileUpload} className="w-40 bg-green-700  text-neutral-50 text-center p-2 shadow-2xl shadow-green-500 dark:shadow-green-500/50 dark:bg-green-800 rounded-xl hover:bg-green-900 active:scale-95 transition-all duration-300 cursor-pointer">
+                <div className="flex items-center gap-2 ">
+                  <button onClick={handleFileUpload} className="w-40 bg-emerald-700  text-neutral-50 text-center p-2 shadow-2xl shadow-emerald-500 dark:shadow-emerald-500/50 dark:bg-emerald-800 rounded-xl hover:bg-emerald-900 active:scale-95 transition-all duration-300 cursor-pointer">
                   <h3>Scan & Analyse</h3>
                 </button>
+                <div onClick={handleRemoveFile} className="text-xl bg-red-600/15 p-2.5 text-red-600 rounded-xl cursor-pointer">
+                  <IoTrashOutline />
+                </div>
+                </div>
               </div>
             )}
           </div>

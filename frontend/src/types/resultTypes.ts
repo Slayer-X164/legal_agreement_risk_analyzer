@@ -6,8 +6,9 @@ type documentNameStore = {
 }
 type clause = {
   id: string,
+  category:string,
   text: string,
-  risk: string,
+  risk: RiskLevel,
   reason: string,
   suggestion: string
 }

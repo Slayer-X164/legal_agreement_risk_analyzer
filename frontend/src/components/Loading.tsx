@@ -99,7 +99,7 @@ export default function Loading({ fileName }: AnalyzingStateProps) {
               >
                 {isDone ? (
                   <div className="">
-                    <MdDone className="text-green-600 text-sm" />
+                    <MdDone className="text-emerald-600 text-sm" />
                   </div>
                 ) : isActive ? (
                   <div className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />

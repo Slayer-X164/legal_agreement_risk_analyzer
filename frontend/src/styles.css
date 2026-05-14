@@ -16,11 +16,10 @@ body {
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
-::-webkit-scrollbar {
-  display: none;
+
+.text-container{
+  white-space: pre-wrap;
+  font-family: sans-serif;
+  line-height: 1.3;
 }
 
-/* Firefox */
-* {
-  scrollbar-width: none;
-}

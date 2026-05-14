@@ -34,12 +34,11 @@ async def analyse_text(text:str):
   {text}"""
 
   response = client.chat.completions.create(
-    model="google/gemini-2.5-flash-lite",
+    model="deepseek/deepseek-v4-flash:free",
     messages=[
       {"role": "user", "content": prompt}
     ],
-    temperature=0.2,
-    max_tokens=4500
+    temperature=1
   )
   raw = response.choices[0].message.content
 

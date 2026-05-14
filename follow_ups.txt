@@ -18,6 +18,13 @@ Three things separate this from a generic "I built a chatbot" project:
 
 RAG with domain-specific knowledge. You're not just calling an LLM — you've built a retrieval system over a curated knowledge base of legal templates. This shows you understand embeddings, vector search, and grounding AI output in real data.
 
-The PDF heatmap UI. Rendering the original contract with coloured overlays (red = high risk, amber = medium, green = safe) is a visceral demo. Interviewers will immediately ask to try it on their own contracts. That's the goal.
+The PDF heatmap UI. Rendering the original contract with coloured overlays (red = high risk, amber = medium, emerald = safe) is a visceral demo. Interviewers will immediately ask to try it on their own contracts. That's the goal.
 
 Structured AI output + validation. Using Pydantic to enforce schema on LLM responses shows you know that raw LLM output isn't production-ready — you need error handling, retries, and structured parsing. This is a real engineering skill.
+
+
+heatmap
+RAG
+Rate Limit
+chunking
+llm call fallback
