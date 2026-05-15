@@ -1,0 +1,170 @@
+[
+  {
+    "id": "employment_termination_1",
+    "document_type": "employment",
+    "category": "termination",
+    "text": "Either party may terminate this Agreement by providing 30 days written notice to the other party.",
+    "explanation": "Balanced notice period protecting both employer and employee."
+  },
+  {
+    "id": "employment_probation_1",
+    "document_type": "employment",
+    "category": "probation",
+    "text": "The probation period shall not exceed six months unless extended by mutual written agreement.",
+    "explanation": "Limits indefinite probation risk."
+  },
+  {
+    "id": "employment_salary_1",
+    "document_type": "employment",
+    "category": "compensation",
+    "text": "Any modification to the employee’s compensation structure shall require prior written notice.",
+    "explanation": "Protects employees from arbitrary salary changes."
+  },
+  {
+    "id": "nda_confidentiality_1",
+    "document_type": "nda",
+    "category": "confidentiality",
+    "text": "The Receiving Party shall use Confidential Information solely for the purpose described in this Agreement.",
+    "explanation": "Defines clear usage limitations."
+  },
+  {
+    "id": "nda_duration_1",
+    "document_type": "nda",
+    "category": "duration",
+    "text": "Confidentiality obligations shall survive termination of this Agreement for a period of three years.",
+    "explanation": "Reasonable survival duration."
+  },
+  {
+    "id": "freelance_payment_1",
+    "document_type": "freelance",
+    "category": "payment_terms",
+    "text": "Invoices shall be paid within 15 business days from the date of receipt.",
+    "explanation": "Provides predictable payment timeline."
+  },
+  {
+    "id": "freelance_scope_1",
+    "document_type": "freelance",
+    "category": "scope_of_work",
+    "text": "Any changes to the scope of work shall require written approval from both parties.",
+    "explanation": "Prevents uncontrolled scope expansion."
+  },
+  {
+    "id": "freelance_ip_1",
+    "document_type": "freelance",
+    "category": "intellectual_property",
+    "text": "Ownership of deliverables shall transfer to the Client only after full payment is received.",
+    "explanation": "Protects freelancers from unpaid work."
+  },
+  {
+    "id": "saas_availability_1",
+    "document_type": "saas",
+    "category": "service_availability",
+    "text": "The Service Provider shall use commercially reasonable efforts to maintain 99.5% monthly uptime.",
+    "explanation": "Defines clear uptime expectations."
+  },
+  {
+    "id": "saas_data_1",
+    "document_type": "saas",
+    "category": "data_protection",
+    "text": "Customer data shall be processed in compliance with applicable privacy and data protection laws.",
+    "explanation": "Ensures regulatory compliance."
+  },
+  {
+    "id": "saas_liability_1",
+    "document_type": "saas",
+    "category": "limitation_of_liability",
+    "text": "The total liability of either party shall not exceed the fees paid under this Agreement during the preceding twelve months.",
+    "explanation": "Reasonable liability cap."
+  },
+  {
+    "id": "rental_deposit_1",
+    "document_type": "rental",
+    "category": "security_deposit",
+    "text": "The security deposit shall be refunded within 30 days after the tenant vacates the premises, subject to lawful deductions.",
+    "explanation": "Protects tenants from indefinite withholding."
+  },
+  {
+    "id": "rental_notice_1",
+    "document_type": "rental",
+    "category": "notice_period",
+    "text": "Either party may terminate the tenancy by providing 30 days written notice.",
+    "explanation": "Fair notice period."
+  },
+  {
+    "id": "rental_maintenance_1",
+    "document_type": "rental",
+    "category": "maintenance",
+    "text": "The Landlord shall maintain the premises in a habitable condition during the tenancy.",
+    "explanation": "Ensures basic habitability obligations."
+  },
+  {
+    "id": "partnership_profit_1",
+    "document_type": "partnership",
+    "category": "profit_sharing",
+    "text": "Profits and losses shall be distributed among partners according to their agreed ownership percentages.",
+    "explanation": "Provides clear allocation rules."
+  },
+  {
+    "id": "partnership_dispute_1",
+    "document_type": "partnership",
+    "category": "dispute_resolution",
+    "text": "Disputes between partners shall first be resolved through mediation before litigation.",
+    "explanation": "Encourages lower-cost dispute resolution."
+  },
+  {
+    "id": "vendor_payment_1",
+    "document_type": "vendor",
+    "category": "payment_terms",
+    "text": "The Client shall pay undisputed invoices within 30 days of receipt.",
+    "explanation": "Establishes predictable payment obligations."
+  },
+  {
+    "id": "vendor_indemnity_1",
+    "document_type": "vendor",
+    "category": "indemnity",
+    "text": "Each party shall indemnify the other against third-party claims arising from its own negligence or misconduct.",
+    "explanation": "Balanced indemnity allocation."
+  },
+  {
+    "id": "privacy_data_1",
+    "document_type": "privacy_policy",
+    "category": "data_collection",
+    "text": "Personal data shall only be collected for lawful and clearly disclosed business purposes.",
+    "explanation": "Promotes transparency in data collection."
+  },
+  {
+    "id": "privacy_rights_1",
+    "document_type": "privacy_policy",
+    "category": "user_rights",
+    "text": "Users may request access, correction, or deletion of their personal data subject to applicable law.",
+    "explanation": "Protects user privacy rights."
+  },
+  {
+    "id": "license_scope_1",
+    "document_type": "licensing",
+    "category": "license_grant",
+    "text": "The Licensor grants a non-exclusive, non-transferable license to use the Software for internal business purposes.",
+    "explanation": "Clearly defines usage scope."
+  },
+  {
+    "id": "license_restrictions_1",
+    "document_type": "licensing",
+    "category": "usage_restrictions",
+    "text": "The Licensee shall not reverse engineer or redistribute the Software except as permitted by law.",
+    "explanation": "Protects software ownership rights."
+  },
+  {
+    "id": "tos_arbitration_1",
+    "document_type": "terms_of_service",
+    "category": "arbitration",
+    "text": "Any disputes arising under these Terms shall be resolved through binding arbitration in accordance with applicable law.",
+    "explanation": "Provides structured dispute resolution mechanism."
+  },
+  {
+    "id": "tos_modification_1",
+    "document_type": "terms_of_service",
+    "category": "modification_of_terms",
+    "text": "Users shall be notified of material changes to these Terms before such changes take effect.",
+    "explanation": "Protects users from hidden changes."
+  }
+]

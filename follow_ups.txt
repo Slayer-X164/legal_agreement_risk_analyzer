@@ -25,21 +25,48 @@ Structured AI output + validation. Using Pydantic to enforce schema on LLM respo
 
 RAG->
 """
-When AI detects risky clause:
-
-"The company may terminate without notice..."
-
-You retrieve:
-
+data:
 standard employment clause
 fair industry wording
 safer rewrite examples
-
-Then AI uses THAT to generate:
-
-better explanation
-better rewrite
+more...
+.
+.
+Embedding data
+.
+.
+Store in VectorDB
+.
+.
+Retrieval (convert query to vector to find similar chunks in vectorDB)
+.
+.
+Response Generator (feed original query + retrieved chunks to LLM for final response)
 """
 
+Step 1 ))
+Make:
+standard_clauses.json
+with:
+20–30 clauses
+
+Step 2 ))
+Learn embeddings ONLY.
+Do:
+text → vector
+for one clause.
+That’s it.
+
+Step 3
+Create Supabase table.
+
+Step 4
+Insert vectors.
+
+ONLY after that:
+retrieval
+generation
+
+............
 Rate Limit
 llm call fallback
